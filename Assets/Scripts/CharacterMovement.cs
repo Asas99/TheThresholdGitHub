@@ -7,7 +7,6 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
     public bool CanJump;
     public Rigidbody2D rb;
     public int Movementdirection;
-
     public void Jump()
     {
         rb.linearVelocityY = JumpForce;
