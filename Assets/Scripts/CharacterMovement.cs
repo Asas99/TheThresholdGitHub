@@ -9,7 +9,10 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
     public int Movementdirection;
     public void Jump()
     {
-        rb.linearVelocityY = JumpForce;
+        if (CanJump)
+        {
+            rb.linearVelocityY = JumpForce;
+        }
     }
 
     public void Move(int direction)
