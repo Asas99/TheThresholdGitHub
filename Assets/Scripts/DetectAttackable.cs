@@ -19,7 +19,7 @@ public class DetectAttackable : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            print(" notattackable");
+            print("not attackable");
             characterCombat.CanAttack = false;
             characterCombat.CurrentWaponDamage = 0;
         }
