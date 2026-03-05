@@ -57,7 +57,7 @@ public class EnemyCombat : MonoBehaviour, ICombat
 
     void Update()
     {
-        if (Attackable)
+        if (Attackable && GetComponent<SeePlayer>().CanSeePlayer)
         {
             attackTimer += Time.deltaTime;
 

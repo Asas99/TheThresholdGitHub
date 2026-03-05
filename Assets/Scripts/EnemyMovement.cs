@@ -12,13 +12,15 @@ public class EnemyMovement : MonoBehaviour, IMovement
 
     void Update()
     {
-        float direction = Mathf.Sign(Player.transform.position.x - transform.position.x); direction = Mathf.Sign(Player.transform.position.x - transform.position.x);
-        Move(direction);
+        if (GetComponent<SeePlayer>().CanSeePlayer)
+        {
+            float direction = Mathf.Sign(Player.transform.position.x - transform.position.x); direction = Mathf.Sign(Player.transform.position.x - transform.position.x);
+            Move(direction);
+        }
     }
 
     public void Move(float direction)
     {
-
         transform.position += new Vector3(MoveSpeed * Time.deltaTime * direction, 0, 0);
     }
 }
