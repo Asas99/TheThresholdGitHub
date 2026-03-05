@@ -15,7 +15,7 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
         }
     }
 
-    public void Move(int direction)
+    public void Move(float direction)
     {
         transform.position += new Vector3(MoveSpeed * Time.fixedDeltaTime * direction, 0, 0);
     }

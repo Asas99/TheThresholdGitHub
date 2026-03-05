@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IMovement
 {
-    void Move(int direction);
+    void Move(float direction);
 }
