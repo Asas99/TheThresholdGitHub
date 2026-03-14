@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterCombat : MonoBehaviour, ICombat
 {
@@ -20,7 +21,8 @@ public class CharacterCombat : MonoBehaviour, ICombat
         if(Health <= 0)
         {
             //Daha sonraki aþamalarda bir sprite animastion oynatýlabilir.
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
