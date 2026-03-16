@@ -4,18 +4,24 @@ public class EnemyMovement : MonoBehaviour, IMovement
 {
     public float MoveSpeed;
     public GameObject Player;
+    [HideInInspector]
+    public SeePlayer seePlayer;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        seePlayer = GetComponent<SeePlayer>();
     }
 
     void Update()
     {
-        if (GetComponent<SeePlayer>().CanSeePlayer)
+        if (seePlayer.CanSeePlayer)
         {
-            float direction = Mathf.Sign(Player.transform.position.x - transform.position.x); direction = Mathf.Sign(Player.transform.position.x - transform.position.x);
-            Move(direction);
+            float direction = Mathf.Sign(Player.transform.position.x - transform.position.x);
+            if(seePlayer.direction.magnitude > seePlayer.StopDistance)
+            {
+                Move(direction);
+            }
         }
     }
 

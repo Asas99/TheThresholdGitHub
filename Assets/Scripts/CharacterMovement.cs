@@ -17,7 +17,8 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
 
     public void Move(float direction)
     {
-        transform.position += new Vector3(MoveSpeed * Time.fixedDeltaTime * direction, 0, 0);
+        //transform.position += new Vector3(MoveSpeed * Time.fixedDeltaTime * direction, 0, 0);
+        rb.linearVelocityX = MoveSpeed * direction * Time.fixedDeltaTime;
     }
 
     public void SetDirection(int direction)
@@ -36,10 +37,16 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
     // Update is called once per frame
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        CanJump = true;
+        if (collision.gameObject.CompareTag("zemin"))
+        {
+            CanJump = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        CanJump = false;
+        if (collision.gameObject.CompareTag("zemin"))
+        {
+            CanJump = false;
+        }
     }
 }

@@ -5,6 +5,9 @@ public class SeePlayer : MonoBehaviour
     private GameObject Player;
     public bool CanSeePlayer;
     public float ViewDistance = 10f;
+    public float StopDistance;
+    [HideInInspector]
+    public Vector2 direction;
 
     void Start()
     {
@@ -13,7 +16,7 @@ public class SeePlayer : MonoBehaviour
 
     void Update()
     {
-        Vector3 direction = Player.transform.position - transform.position;
+        direction = Player.transform.position - transform.position;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, ViewDistance);
         

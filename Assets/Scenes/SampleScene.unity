@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1119287357}
         m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
@@ -1402,7 +1402,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1413,7 +1413,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1119287354
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1478,7 +1478,7 @@ Transform:
   m_GameObject: {fileID: 1119287352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2577824, y: 0.10068933, z: 0}
+  m_LocalPosition: {x: -1.33, y: -2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df107b1da15f1c74ea0b6c4db2412f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
+  MoveSpeed: 600
   JumpForce: 8
   CanJump: 0
   rb: {fileID: 1119287353}
@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d627fef207c6c4282fa88dfce170d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 32
+  Health: 830
   CanAttack: 0
   CurrentWaponDamage: 0
   detectAttackable: {fileID: 1513572556}
@@ -1569,7 +1569,7 @@ GameObject:
   - component: {fileID: 1151421475}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Enemy
+  m_TagString: zemin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   Damage: 19
   Attackable: 0
   characterCombat: {fileID: 0}
-  attackInterval: 0
+  attackInterval: 1
 --- !u!114 &1785725236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,6 +2142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 0.5
   Player: {fileID: 0}
+  seePlayer: {fileID: 0}
 --- !u!114 &1785725237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,6 +2157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanSeePlayer: 0
   ViewDistance: 10
+  StopDistance: 2
+  direction: {x: 0, y: 0}
 --- !u!1 &2089942794
 GameObject:
   m_ObjectHideFlags: 0
