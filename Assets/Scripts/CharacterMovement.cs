@@ -18,7 +18,7 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
     public void Move(float direction)
     {
         //transform.position += new Vector3(MoveSpeed * Time.fixedDeltaTime * direction, 0, 0);
-        rb.linearVelocityX = MoveSpeed * direction * Time.fixedDeltaTime;
+        rb.linearVelocityX = MoveSpeed * direction;
     }
 
     public void SetDirection(int direction)
@@ -39,14 +39,34 @@ public class CharacterMovement : MonoBehaviour, IMovement, IJump
     {
         if (collision.gameObject.CompareTag("zemin"))
         {
-            CanJump = true;
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                if (collision.GetContact(i).normal.y > 0.5f)
+                {
+                    CanJump = true;
+                    break;
+                }
+            }
+        }
+    }
+    public void OnCollisionStay2D(Collision2D collision)
+    //Düz olmayan bir terrain oyuna eklenirse collision checkini tek bir kere yaparsak karakterin zıplamasında sorun yaşanabilir bu yüzden collision stay de de kontrol yaparak karakterin zıplayabilmesi için ekledim
+    //Şart değil çıkarılabilir ya da commentlenebilir
+    {
+        if (collision.gameObject.CompareTag("zemin"))
+        {
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                if (collision.GetContact(i).normal.y > 0.5f)
+                {
+                    CanJump = true;
+                    break;
+                }
+            }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("zemin"))
-        {
-            CanJump = false;
-        }
+        CanJump = false;
     }
 }
