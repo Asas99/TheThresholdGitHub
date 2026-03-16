@@ -17,21 +17,24 @@ public class SeePlayer : MonoBehaviour
     void Update()
     {
         direction = Player.transform.position - transform.position;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, ViewDistance);
-        
-        if (hit.collider != null && hit.collider.CompareTag("Player"))
+        //Burayı biraz değiştirdim raycastall yapıp önüne gelen bir collider varsa ona çarpıp bitmemesini sağladım fakat ilerde bu layermask kullanarak daha temiz ve optimize edilebilir
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, direction.normalized, ViewDistance);
+        CanSeePlayer = false;
+        foreach (RaycastHit2D raycastHit in hit)
         {
-            CanSeePlayer = true;
+            if (raycastHit.collider.gameObject == gameObject || raycastHit.collider.CompareTag("Enemy"))
+            {
+                continue;
+            }
+            if (raycastHit.collider.gameObject.CompareTag("Player"))
+            {
+                CanSeePlayer = true;
+                break;
+            }
+            else if (!raycastHit.collider.isTrigger)
+            {
+                break;
+            }
         }
-        else
-        {
-            CanSeePlayer = false;
-        }
-        if (direction.magnitude > ViewDistance)
-        {
-            CanSeePlayer = false;
-        }
-
     }
 }
